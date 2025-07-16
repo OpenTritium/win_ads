@@ -29,6 +29,23 @@ This library does not invent anything new. It is merely a basic wrapper around t
 >
 > **Bottom line: Do not use ADS for any critical data unless you have 100% control over the file's storage environment.**
 
+```rust
+use win_ads::*;
+fn main() {
+    const PATH: &'static str = "./test";
+    const STREAM: &'static str = "default";
+    set_ads(PATH, STREAM, b"some bytes here").unwrap();
+    let mut buf = vec![];
+    get_ads(PATH, STREAM, &mut buf).unwrap();
+    let s = str::from_utf8(buf.as_slice()).unwrap();
+    println!("{s}");
+    append_ads(PATH, STREAM, b"foo").unwrap();
+    get_ads(PATH, STREAM, &mut buf).unwrap();
+    let s = str::from_utf8(buf.as_slice()).unwrap();
+    println!("{s}");
+    delete_ads(PATH, STREAM).unwrap();
+}
+```
 
 <a name="chinese"></a>
 
@@ -52,3 +69,21 @@ This library does not invent anything new. It is merely a basic wrapper around t
 > *   拷贝到 macOS (APFS, HFS+) 或 Linux (ext4, Btrfs) 系统。
 >
 > **结论：除非您能 100% 控制文件的存储环境，否则绝对不要用 ADS 来存储任何关键数据。**
+
+```rust
+use win_ads::*;
+fn main() {
+    const PATH: &'static str = "./test";
+    const STREAM: &'static str = "default";
+    set_ads(PATH, STREAM, b"some bytes here").unwrap();
+    let mut buf = vec![];
+    get_ads(PATH, STREAM, &mut buf).unwrap();
+    let s = str::from_utf8(buf.as_slice()).unwrap();
+    println!("{s}");
+    append_ads(PATH, STREAM, b"foo").unwrap();
+    get_ads(PATH, STREAM, &mut buf).unwrap();
+    let s = str::from_utf8(buf.as_slice()).unwrap();
+    println!("{s}");
+    delete_ads(PATH, STREAM).unwrap();
+}
+```
