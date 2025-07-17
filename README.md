@@ -8,6 +8,8 @@
 
 <a name="english"></a>
 
+## English
+
 A **humble Rust wrapper** for the Windows API to manipulate **Alternate Data Streams (ADS)**.
 
 This library does not invent anything new. It is merely a basic wrapper around the low-level Win32 API functions provided by the `windows-rs` crate, making them slightly easier to call from Rust.
@@ -47,7 +49,7 @@ fn main() {
 
 <a name="chinese"></a>
 
-## 如何使用
+## 中文
 
 一个针对 Windows API 的**简陋 Rust 包装**，用于操作**备用数据流 (Alternate Data Streams)**。
 
@@ -65,6 +67,9 @@ fn main() {
 > *   放进标准的 `.zip` 压缩包。
 > *   作为电子邮件附件发送。
 > *   拷贝到 macOS (APFS, HFS+) 或 Linux (ext4, Btrfs) 系统。
+
+
+## 如何使用
 
 ```rust
 use win_ads::*;
