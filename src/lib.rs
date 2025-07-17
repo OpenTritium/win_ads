@@ -1,3 +1,7 @@
+#[cfg(not(windows))]
+compile_error!("This crate is designed to work only on the Windows operating system.");
+
+#[cfg(windows)]
 use windows::{
     Win32::{
         Foundation::{CloseHandle, GENERIC_READ, GENERIC_WRITE},
@@ -13,7 +17,6 @@ use windows_strings::HSTRING;
 
 /// create or overwrite an ads
 #[inline]
-#[cfg(target_os = "windows")]
 pub fn set_ads(path: &str, name: &str, src: impl AsRef<[u8]>) -> Result<u32> {
     let stream_path = HSTRING::from(format!("{path}:{name}"));
     let mut written: u32 = 0;
@@ -35,7 +38,6 @@ pub fn set_ads(path: &str, name: &str, src: impl AsRef<[u8]>) -> Result<u32> {
 
 /// read an ads
 #[inline]
-#[cfg(target_os = "windows")]
 pub fn get_ads(path: &str, name: &str, dst: &mut Vec<u8>) -> Result<()> {
     let stream_path = HSTRING::from(format!("{path}:{name}"));
     unsafe {
@@ -61,7 +63,6 @@ pub fn get_ads(path: &str, name: &str, dst: &mut Vec<u8>) -> Result<()> {
 
 /// append an ads
 #[inline]
-#[cfg(target_os = "windows")]
 pub fn append_ads(path: &str, name: &str, src: impl AsRef<[u8]>) -> Result<u32> {
     let stream_path = HSTRING::from(format!("{path}:{name}"));
     let mut written = 0;
@@ -83,7 +84,6 @@ pub fn append_ads(path: &str, name: &str, src: impl AsRef<[u8]>) -> Result<u32> 
 
 /// delete a ads
 #[inline]
-#[cfg(target_os = "windows")]
 pub fn delete_ads(path: &str, name: &str) -> Result<()> {
     let stream_path = HSTRING::from(format!("{path}:{name}"));
     unsafe {
@@ -91,10 +91,6 @@ pub fn delete_ads(path: &str, name: &str) -> Result<()> {
     }
     Ok(())
 }
-
-#[cfg(not(target_os = "windows"))]
-compile_error!("This crate can only be compiled on Linux systems.");
-
 
 #[cfg(test)]
 #[cfg(target_os = "windows")]
