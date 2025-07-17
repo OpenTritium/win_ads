@@ -1,6 +1,6 @@
 [package]
 name = "win_ads"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2024"
 authors = ["TritiumQin@tritium404@hotmail.com"]
 description = "A simple Rust wrapper for the Windows API to manipulate Alternate Data Streams (ADS)."
@@ -10,12 +10,12 @@ repository = "https://github.com/OpenTritium/win_ads.git"
 keywords = ["windows", "winapi", "ads", "ntfs", "filesystem"]
 categories = ["os::windows-apis", "filesystem"]
 
-[package.metadata.docs.rs]
-rustdoc-args = ["--cfg","windows"]
-all-features = true
-
 [dependencies]
-windows = {version="0.61.3", features=["Win32_Security","Win32_Storage_FileSystem","Win32_System_IO"]}
+windows = { version = "0.61.3", features = [
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+] }
 windows-strings = "0.4.2"
 
 [dev-dependencies]
