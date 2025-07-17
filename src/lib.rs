@@ -1,7 +1,6 @@
 #[cfg(not(windows))]
 compile_error!("This crate is designed to work only on the Windows operating system.");
 
-#[cfg(windows)]
 use windows::{
     Win32::{
         Foundation::{CloseHandle, GENERIC_READ, GENERIC_WRITE},
