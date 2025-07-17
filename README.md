@@ -14,7 +14,7 @@ A **humble Rust wrapper** for the Windows API to manipulate **Alternate Data Str
 
 This library does not invent anything new. It is merely a basic wrapper around the low-level Win32 API functions provided by the `windows-rs` crate, making them slightly easier to call from Rust.
 
-> ⚠️ **CORE WARNING: HIGH RISK OF DATA LOSS**
+> ⚠️ **WARNING: HIGH RISK OF DATA LOSS**
 >
 > Alternate Data Streams (ADS) are a feature of specific Windows file systems like **NTFS and ReFS**.
 >
@@ -26,8 +26,6 @@ This library does not invent anything new. It is merely a basic wrapper around t
 > *   Putting it into a standard `.zip` archive.
 > *   Sending it as an email attachment.
 > *   Copying it to a macOS (APFS, HFS+) or Linux (ext4, Btrfs) system.
->
-> **Bottom line: Do not use ADS for any critical data unless you have 100% control over the file's storage environment.**
 
 ```rust
 use win_ads::*;
@@ -55,7 +53,7 @@ fn main() {
 
 这个库没有创造任何新东西，它仅仅是对 `windows-rs` crate 提供的底层 Win32 API 函数做了一层最基础的封装，使其在 Rust 中稍微易于调用。
 
-> ⚠️ **核心警告：数据极易丢失**
+> ⚠️ **警告：数据极易丢失**
 >
 > 备用数据流 (ADS) 是 **NTFS 和 ReFS** 等特定 Windows 文件系统的一个特性。
 >
@@ -67,8 +65,6 @@ fn main() {
 > *   放进标准的 `.zip` 压缩包。
 > *   作为电子邮件附件发送。
 > *   拷贝到 macOS (APFS, HFS+) 或 Linux (ext4, Btrfs) 系统。
->
-> **结论：除非您能 100% 控制文件的存储环境，否则绝对不要用 ADS 来存储任何关键数据。**
 
 ```rust
 use win_ads::*;
